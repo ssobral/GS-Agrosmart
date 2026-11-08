@@ -1,0 +1,37 @@
+.history-main { padding-bottom: 120px; }
+.history-main .dash-heading h1 { font-size: clamp(29px, 2.6vw, 44px); }
+.history-charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.history-card { padding: 14px 22px 16px; }
+.history-card .dash-card-heading { border-bottom: 1px solid #e8ecef; min-height: 68px; padding-bottom: 12px; }
+.history-card .dash-card-heading h2 { font-size: clamp(21px, 1.65vw, 27px); }
+.history-records-label { color: #43546b; font-size: 18px; margin: 8px 0 4px; }
+.history-chart-scroll { overflow-x: auto; border-radius: 6px; }
+.history-chart-scroll:focus-visible { outline: 2px solid #148b09; outline-offset: 2px; }
+.history-chart { display: block; width: 100%; height: auto; color: #079900; }
+.history-chart--wide { min-width: 600px; }
+.history-axis-label { fill: #46546a; font-family: inherit; font-size: 17px; }
+.history-date-label { fill: #46546a; font-family: inherit; font-size: 14px; }
+.history-value-label { fill: #25482c; font-family: inherit; font-size: 12px; font-weight: 600; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
+.history-recommendations { margin-top: 26px; padding: 14px 22px 18px; }
+.history-recommendations .dash-card-heading { flex-wrap: wrap; padding-bottom: 14px; }
+.history-recommendations h2 { font-size: clamp(23px, 1.9vw, 30px); }
+.history-generate-button { border: 1px solid #148b09; border-radius: 10px; padding: 9px 16px; color: #fff; background: #148b09; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: background .15s; }
+.history-generate-button:hover:not(:disabled) { background: #0c6d04; }
+.history-generate-button:disabled { opacity: .65; cursor: wait; }
+.history-generate-button:focus-visible { outline: 2px solid #148b09; outline-offset: 3px; }
+.history-recommendations-content { min-height: 140px; border-radius: 14px; background: linear-gradient(110deg, #f1fae9, #f1f8ef); }
+.history-suggestions { display: flex; align-items: flex-start; gap: 16px; min-height: 140px; padding: 22px; }
+.history-suggestions p { margin: 0; color: #52634e; font-size: 15px; line-height: 1.6; }
+.history-suggestions .dash-message { color: #7b420b; }
+.history-recommendations-text { min-width: 0; white-space: pre-line; overflow-wrap: anywhere; }
+@media (max-width: 1100px) {
+  .history-charts { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 650px) {
+  .history-main { padding-bottom: 135px; }
+  .history-card { padding: 14px; }
+  .history-recommendations { padding: 14px; margin-top: 18px; }
+  .history-recommendations .dash-card-heading { column-gap: 12px; row-gap: 12px; }
+  .history-generate-button { font-size: 13px; }
+  .history-suggestions { padding: 18px; align-items: flex-start; }
+}
