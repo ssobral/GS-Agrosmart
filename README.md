@@ -39,6 +39,54 @@ Essas faixas são parâmetros do projeto acadêmico. A umidade medida é a do **
 
 **Link:** 
 
+## Executar com Docker Compose
+
+Além da execução manual descrita abaixo, o AgroSmart pode ser iniciado com **Docker Compose**, sem instalar as dependências Python e Node.js localmente.
+
+### Pré-requisitos
+
+- Docker Desktop instalado e em execução, com Docker Compose disponível.
+- Acesso à internet para obter as imagens e conectar ao broker MQTT externo.
+
+### Configuração da chave de IA (opcional)
+
+Na raiz do projeto, copie o arquivo de exemplo para `.env`:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Se desejar usar as recomendações com IA, preencha `OPENAI_API_KEY` no arquivo `.env`. **Nunca coloque uma chave verdadeira em `.env.example` nem envie `.env` ao Git.** Sem a chave, as funções que dependem da OpenAI podem não funcionar.
+
+### Subir a aplicação
+
+Na raiz do repositório:
+
+```powershell
+docker compose up --build -d
+```
+
+- **Interface web:** http://localhost:8080
+- **Documentação da API (Swagger):** http://localhost:8000/docs
+
+O frontend é compilado e servido por Nginx, que encaminha as requisições `/api/` ao serviço FastAPI. O broker MQTT permanece externo.
+
+### Comandos úteis
+
+```powershell
+docker compose ps         # Ver containers
+docker compose logs -f    # Acompanhar logs
+docker compose down       # Parar e remover containers
+```
+
+Os arquivos SQLite permanecem na pasta `data_lake/`, montada no container do backend. Por padrão, `LIMPAR_HISTORICO` está configurado como `false` para preservar o histórico ao reiniciar.
+
+> **Atenção:** evite executar o backend local e o backend Docker ao mesmo tempo, pois ambos podem disputar a porta 8000 e acessar os mesmos bancos. Esta configuração é voltada a desenvolvimento e demonstração local.
+
+Para detalhes adicionais, consulte [DOCKER.md](DOCKER.md).
+
+---
+
 ## Como iniciar os testes
 
 Tenha o projeto no computador, Python com pip, Node.js 22.12 ou superior com npm. Os comandos abaixo são para **Windows / PowerShell**, partindo da pasta raiz do projeto.
