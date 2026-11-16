@@ -238,3 +238,7 @@ OPENAI_API_KEY=chave_da_openai
 ```
 
 Substitua o valor de exemplo pela sua chave e reinicie a API. A chave é carregada apenas pelo backend; o arquivo `.env` já está no `.gitignore` e não deve ser publicado.
+
+## Plano de testes
+
+O plano de testes automatizados, com os casos de teste e as evidências de execução, está disponível em [`docs/PLANO_DE_TESTES.md`](docs/PLANO_DE_TESTES.md).
