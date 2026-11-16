@@ -1,5 +1,6 @@
 
 import logging
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
@@ -32,7 +33,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     
-    inicializar_banco(limpar_historico=True)
+    inicializar_banco(limpar_historico=os.getenv("LIMPAR_HISTORICO", "false").lower() == "true")
     inicializar_banco_users()
     inicializar_banco_controle()
 
