@@ -45,10 +45,16 @@ class StartupTests(unittest.IsolatedAsyncioTestCase):
         cliente = Mock()
 
         def conectar():
-            self.assertEqual(database.buscar_leituras(), [])
-            self.assertEqual(database.buscar_leituras_refined(), [])
-            self.assertEqual(database.buscar_resumo(), [])
-            self.assertEqual(list(database.RAW.glob('*.jsonl')), [])
+            leituras = database.buscar_leituras()
+
+            # O histórico deve ser preservado após reinicializações.
+            self.assertGreater(len(leituras), 0)
+
+            # A leitura registrada antes da inicialização deve continuar disponível.
+            self.assertTrue(
+                any(leitura["temperatura"] == 21.0 for leitura in leituras)
+            )
+
             return cliente
 
         with patch.object(main, 'iniciar_mqtt', side_effect=conectar) as iniciar:
