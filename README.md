@@ -37,7 +37,7 @@ Essas faixas são parâmetros do projeto acadêmico. A umidade medida é a do **
 
 ## Link do vídeo pitch
 
-**Link:** 
+**Link:** https://www.youtube.com/watch?v=RT7dMY_t9lA
 
 ## Executar com Docker Compose
 
@@ -231,7 +231,7 @@ As recomendações não acionam equipamentos. No MVP, o acionamento imediato é 
 
 Para usar a IA, é necessário obter a API KEY e cadastra-la. 
 
-Crie o arquivo `backend/.env` e preencha:
+Crie o arquivo `.env` e preencha:
 
 ```.env
 OPENAI_API_KEY=chave_da_openai
